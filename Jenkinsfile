@@ -62,7 +62,7 @@ pipeline {
 
             }
         }
-       stag('build docker image') {
+       stage('build docker image') {
            steps {
                script {
                    docker.build registry + ":$BUILD_NUMBER"
@@ -88,8 +88,7 @@ pipeline {
        stage('kubernetes deployment') {
            agent { label 'kube-node02'}
            steps {
-               sh "helm upgrade --install force vprofile-stack helm/devops --set appimage=$registry:$BUILD_NUMBER" --namespace devops
-
+               sh "helm upgrade --install force vprofile-stack helm/devops --set appimage=$registry:$BUILD_NUMBER --namespace devops"
                }
            }
        }
