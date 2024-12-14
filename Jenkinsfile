@@ -5,19 +5,17 @@ def COLOR_MAP = [
 
 pipeline {
   agent any
-//   tools {
-//     maven "maven3.9"
-//     jdk "OpenJDK17"
-//   }
-//   environment {
-//       JAVA_HOME = tool name: 'OpenJDK17', type: 'jdk'
-//       PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
-//       SONAR_SCANNER_OPTS = "--add-opens java.base/java.lang=ALL-UNNAMED"
-//     }
-      environment {
-           registry = "sureshaws/docker-first"
-           registryCredential = 'dockerhublogin'
-         }
+   tools {
+     maven "maven3.9"
+     jdk "OpenJDK17"
+   }
+   environment {
+       JAVA_HOME = tool name: 'OpenJDK17', type: 'jdk'
+       PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+       SONAR_SCANNER_OPTS = "--add-opens java.base/java.lang=ALL-UNNAMED"    
+       registry = "sureshaws/docker-first"
+       registryCredential = 'dockerhublogin'
+   }
   stages {
 //     stage('fetch code') {
 //       steps {
@@ -112,7 +110,7 @@ pipeline {
 //                )
 //           }
 //       }
-//    }
+    }
 
   post {
     always {
