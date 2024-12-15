@@ -60,7 +60,7 @@ pipeline {
 
             }
         }
-       stage('remove unused docker images') {
+       stage('remove previous docker images') {
                  steps {
                       script {
                           sh 'docker image prune -f'
