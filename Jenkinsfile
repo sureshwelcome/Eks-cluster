@@ -93,7 +93,7 @@ pipeline {
        stage('kubernetes deployment') {
            agent { label 'kube-node02'}
            steps {
-               sh "helm upgrade --install vprofile-stack helm/devops --set appimage=$registry:$BUILD_NUMBER --namespace devops"
+               sh "helm upgrade --install vprofile-stack devops/devops --set appimage=$registry:$BUILD_NUMBER --namespace devops"
                }
            }
        }
