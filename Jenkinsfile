@@ -86,7 +86,7 @@ pipeline {
        stage('remove unused docker images') {
            steps {
                script {
-                   docker.image(registry + ":$BUILD_NUMBER").remove()
+                   sh "docker rmi ${registry}:${BUILD_NUMBER}"
                }
            }
        }
